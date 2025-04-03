@@ -38,12 +38,14 @@
       }
     </div>
 
-    <div class="d-flex justify-content-center mt-3 mb-5">
-      <button mat-icon-button matTooltip="Cargar más Pokémons" (click)="next()">
-        <mat-icon [fontSet]="'material-icons-round'" matListItemIcon>
-          keyboard_arrow_down
-        </mat-icon>
-      </button>
-    </div>
+    @if (!form.controls.search.value) {
+      <div class="d-flex justify-content-center mt-3 mb-5">
+        <button mat-icon-button matTooltip="Cargar más Pokémons" (click)="next()">
+          <mat-icon [fontSet]="'material-icons-round'" matListItemIcon>
+            keyboard_arrow_down
+          </mat-icon>
+        </button>
+      </div>
+    }
   }
 </div>
