@@ -1,6 +1,6 @@
-# Tasks Test Smart
+# Pokemons Appinit
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.
+This project was generated using [Angular CLI] version 19.2.5.
 
 ## Instalación de dependencias
 
@@ -36,4 +36,4 @@ Una vez compilado, abre tu navegador y navega a la siguiente ruta `http://localh
 
 ## Ruta de despliegue
 
-El proyecto lo desplegue en Vercel ya que por defecto implementa CI/CD y esta es la ruta de despliegue ``.
+El proyecto lo desplegue en Vercel ya que por defecto implementa CI/CD y esta es la ruta de despliegue `https://pokemons-appinit.vercel.app/`.
