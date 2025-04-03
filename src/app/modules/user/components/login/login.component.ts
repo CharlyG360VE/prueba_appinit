@@ -6,6 +6,8 @@ import { IPayloadLogin } from '../../interface/user.interface';
 import { Router } from '@angular/router';
 import { DialogService } from '@core/services/dialog.service';
 import { LOGIN_IMPORTS as imports } from '@modules/user/helpers/login-imports.helper';
+import { AlertType } from '@core/interfaces/dialog.interface';
+import { AlertTypeEnum } from '@core/enums/general-dialog.enum';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +23,7 @@ export default class LoginComponent {
   private readonly _loginSvc = inject(LoginService);
   private readonly _router = inject(Router);
 
-  form = this._fb.group<ILoginForm>(
+  public form = this._fb.group<ILoginForm>(
     {
       email: this._fb.control(
         undefined,
@@ -55,15 +57,23 @@ export default class LoginComponent {
     const PAYLOAD: IPayloadLogin = {
       email: this.form.controls.email.value!,
       password: this.form.controls.password.value!
-    }
-    const RESPONSE = this._loginSvc.login(PAYLOAD)
+    };
+    const RESPONSE = this._loginSvc.login(PAYLOAD);
 
     if (RESPONSE) {
-      this._dialogSvc.alertDialog('', 'Inicio de sesión exitoso.');
+      this._dialogSvc.alertDialog(this.defaultDialogOptions(AlertTypeEnum.CHECK, 'Inicio de sesión exitoso.'));
       this._router.navigate(['/privado/inicio-privado']);
     } else {
-      this._dialogSvc.alertDialog('', 'Correo y/o contraseña invalida.');
+      this._dialogSvc.alertDialog(this.defaultDialogOptions(AlertTypeEnum.WARNING, 'Correo y/o contraseña invalida.'));
     }
+  }
+
+  private defaultDialogOptions(alertType: AlertType, textSecondary: string) {
+    return {
+      ...this._dialogSvc.defaultOptions,
+      alertType,
+      textSecondary
+    };
   }
 
 }

@@ -30,14 +30,14 @@ export default class LayoutComponent {
       route: eAppRoutes.PRIVATE_HOME
     },
     {
-      icon: 'group',
+      icon: 'adjust',
       label: 'Listado de pokemons',
       route: eAppRoutes.POKEMONS
     }
   ];
   collapsed = signal(true);
   sidenavWidth = computed(() => this.collapsed() ? '5.6em' : '16em');
-  profilePicSize = computed(() => this.collapsed() ? '32' : '100');
+  profilePicSize = computed(() => this.collapsed() ? '32' : '90');
 
   logout() {
     this._store.dispatch(logoutUser());

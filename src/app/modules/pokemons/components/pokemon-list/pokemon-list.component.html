@@ -1,14 +1,34 @@
 <div class="my-5">
-  <div class="d-flex justify-content-center mt-4 mb-4">
-    <h2>
-      Listado de pokemons
-    </h2>
+  <div class="d-flex flex-column align-items-center my-5">
+    <h2> Listado de pokemons </h2>
+
+    <p class="title-description">Aqui puedes explorar la lista de Pokémons, busca tus favoritos y descubre nuevos pokemons.</p>
   </div>
 
   @if (pokemonList().length > 0) {
+    <form [formGroup]="form" class="my-4">
+      <div class="d-flex justify-content-center">
+        <mat-form-field class="w-25" appearance="fill" color="primary">
+          <mat-label class="fs-14px">Encuentra tu Pokémon</mat-label>
+          <input  matInput
+                  [formControl]="form.controls.search"
+                  type="text"
+                  autocomplete="off"
+                  (keyup)="applyFilter($event)" />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+    </form>
+
     <div class="d-flex justify-content-around flex-wrap">
-      @for (pokemon of pokemonList(); track pokemon.name) {
+      @for (pokemon of filteredPokemons(); track pokemon.name) {
         <appinit-card [title]="pokemon.name">
+          <div class="d-flex justify-content-center pt-3 flex-wrap">
+            @for (picture of pokemon.url; track picture) {
+              <img [src]="picture" class="w-5em" [alt]="'Pokemon ' + pokemon.name" loading="lazy" />
+            }
+          </div>
+
           <mat-card-actions class="justify-content-center mt-4">
             <button mat-raised-button (click)="pokemonDetail(pokemon.name)">
               Ver detalle
@@ -19,7 +39,7 @@
     </div>
 
     <div class="d-flex justify-content-center mt-3 mb-5">
-      <button mat-icon-button matTooltip="Ver mas..." (click)="next()">
+      <button mat-icon-button matTooltip="Cargar más Pokémons" (click)="next()">
         <mat-icon [fontSet]="'material-icons-round'" matListItemIcon>
           keyboard_arrow_down
         </mat-icon>

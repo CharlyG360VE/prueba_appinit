@@ -31,24 +31,34 @@
                   [routerLink]="item.route"
                   routerLinkActive
                   #rla="routerLinkActive"
-                  [routerLinkActiveOptions]="{exact: true}">
-                  <mat-icon [fontSet]="rla.isActive ? 'material-icons-round' : 'material-icons-outlined'" matListItemIcon>
-                      {{item.icon}}
+                  [routerLinkActiveOptions]="{exact: true}"
+                  (click)="collapsed.set(true)">
+                  <mat-icon [fontSet]="rla.isActive ? 'material-icons-round' : 'material-icons-outlined'"
+                            matListItemIcon
+                            class="fs-22px"
+                            [matTooltip]="item.label"
+                            [matTooltipPosition]="'after'"
+                            [matTooltipDisabled]="!collapsed()">
+                    {{item.icon}}
                   </mat-icon>
                   @if (!collapsed()) {
-                      <span matListItemTitle class="secondary-color animatedOpacity" [ngClass]="{'secondary-color': rla.isActive}">{{item.label}}</span>
+                    <span matListItemTitle class="animatedOpacity fs-14px" [ngClass]="{'secondary-color': rla.isActive}">{{item.label}}</span>
                   }
               </a>
           }
       </mat-nav-list>
 
-      <mat-nav-list class="fixed bottom-4" [ngClass]="{'max-w-16': collapsed()}">
-          <a mat-list-item class="menu-item" (click)="logout()">
-              <mat-icon [fontSet]="'material-icons-round'" matListItemIcon>
+      <mat-nav-list>
+          <a mat-list-item class="menu-item close-sesion-item" [ngClass]="{'w-close-sesion-not-collapsed': !collapsed(), 'w-close-sesion-collapsed': collapsed()}" (click)="logout()">
+              <mat-icon [fontSet]="'material-icons-round'"
+                        matListItemIcon class="fs-22px"
+                        [matTooltip]="'Cerrar sesión'"
+                        [matTooltipPosition]="'after'"
+                        [matTooltipDisabled]="!collapsed()">
                   logout
               </mat-icon>
               @if (!collapsed()) {
-                  <span matListItemTitle class="animatedOpacity">Cerrar sesión</span>
+                  <span matListItemTitle class="animatedOpacity fs-14px">Cerrar sesión</span>
               }
           </a>
       </mat-nav-list>

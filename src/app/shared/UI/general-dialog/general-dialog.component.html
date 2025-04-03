@@ -26,11 +26,16 @@
                 </div>
             } @else {
                 <div class="d-flex justify-content-center w-100">
-                    <mat-icon class="material-icons-round check-size animatedOpacity" color="primary">
-                        task_alt
+                    <mat-icon class="material-icons-round check-size animatedOpacity"
+                              [ngClass]="{
+                                'success-color': alertType.CHECK === data.alertType,
+                                'warning-color': alertType.WARNING === data.alertType,
+                                'error-color': alertType.ERROR === data.alertType,
+                              }">
+                        {{ data.alertType }}
                     </mat-icon>
                 </div>
-                <div class="d-flex justify-content-center mt-3 animatedOpacity">
+                <div class="d-flex justify-content-center mt-4 animatedOpacity">
                   <button mat-raised-button color="primary" class="custom-btn ms-3" [mat-dialog-close]="true">{{ data.textNotConfirmBtn }}</button>
                 </div>
             }

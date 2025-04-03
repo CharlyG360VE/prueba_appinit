@@ -7,7 +7,7 @@ export interface IPokemonListResponse {
 
 export interface IPokemon {
   name: string;
-  url:  string;
+  url: string[];
 }
 
 export interface IPokemonDetailResponse {
@@ -194,5 +194,12 @@ export interface IPokemonDetail {
   abilities: string[];
   moves: string[];
   pictures: string[];
+  types: string[];
+  stats: IPokemonStat[];
+}
+
+export interface IPokemonStat {
+  name: string;
+  stat: number;
 }
 

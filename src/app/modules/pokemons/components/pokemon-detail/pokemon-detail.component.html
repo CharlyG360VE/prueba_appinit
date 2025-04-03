@@ -1,35 +1,50 @@
 <div class="my-5">
-  <div class="d-flex justify-content-center mt-4 mb-4">
-    <h2>
-      Detalle de {{ name | titlecase }}
+  <div class="d-flex flex-column align-items-center my-5">
+    <h2> {{ name | titlecase }} </h2>
 
-      @if (pokemonDetail()) {
-        <img [src]="pokemonDetail()?.pictures?.at(-1)" alt="pokemon pic" class="w-picture-detail">
-      }
-    </h2>
+    <p class="title-description">Aqui puedes explorar mas el detalle del pokemon {{ name }}.</p>
+
+    @if (pokemonDetail()) {
+      <div class="d-flex justify-content-center py-4 flex-wrap">
+        @for (picture of pokemonDetail()?.pictures; track picture) {
+          <img [src]="picture" [alt]="'Pokemon ' + name" loading="lazy">
+        }
+      </div>
+    }
   </div>
 
   @if (pokemonDetail()) {
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-md-6">
-        <appinit-card [title]="'Movimientos de ' + name">
-          <div class="d-flex justify-content-center py-4">
-            <mat-chip-set>
-              @for (move of pokemonDetail()?.moves; track move) {
-                <mat-chip>
-                  <img matChipAvatar [src]="pokemonDetail()?.pictures?.at(-1)" alt="pokemon pic chip" class="w-picture-detail" />
-                  {{ move }}
-                </mat-chip>
-              }
-            </mat-chip-set>
+        <appinit-card [title]="'Descripción general'">
+          <div class="d-flex align-items-baseline my-4">
+            @if (pokemonDetail() && pokemonDetail()!.types.length > 0) {
+              <div class="me-3">
+                <p>Tipo</p>
+              </div>
+
+              <mat-chip-set>
+                @for (type of pokemonDetail()!.types; track type) {
+                  <mat-chip>
+                    {{ type }}
+                  </mat-chip>
+                }
+              </mat-chip-set>
+            }
           </div>
-        </appinit-card>
-      </div>
-      <div class="col-md-6">
-        <appinit-card [title]="'Imagenes de ' + name">
-          <div class="d-flex justify-content-center py-4 flex-wrap">
-            @for (picture of pokemonDetail()?.pictures; track picture) {
-              <img [src]="picture" [alt]="'Pokemon ' + name">
+
+          <div class="d-flex align-items-baseline my-4">
+            <div class="me-3">
+              <p>Stats</p>
+            </div>
+            @if (pokemonDetail() && pokemonDetail()!.stats.length > 0) {
+              <mat-chip-set>
+                @for (stat of pokemonDetail()!.stats; track stat) {
+                  <mat-chip>
+                    {{ stat.name }}: {{ stat.stat }}
+                  </mat-chip>
+                }
+              </mat-chip-set>
             }
           </div>
         </appinit-card>
@@ -39,8 +54,21 @@
             <mat-chip-set>
               @for (ability of pokemonDetail()?.abilities; track ability) {
                 <mat-chip>
-                  <img matChipAvatar [src]="pokemonDetail()?.pictures?.at(0)" alt="pokemon pic chip" class="w-picture-detail" />
                   {{ ability }}
+                </mat-chip>
+              }
+            </mat-chip-set>
+          </div>
+        </appinit-card>
+      </div>
+
+      <div class="col-md-6">
+        <appinit-card [title]="'Movimientos de ' + name">
+          <div class="d-flex justify-content-center py-4">
+            <mat-chip-set>
+              @for (move of pokemonDetail()?.moves; track move) {
+                <mat-chip>
+                  {{ move }}
                 </mat-chip>
               }
             </mat-chip-set>

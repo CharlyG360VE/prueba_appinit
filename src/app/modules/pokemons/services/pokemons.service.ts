@@ -27,7 +27,14 @@ export class PokemonsService {
     return {
       abilities: pokemon.abilities.map(({ ability }) => ability.name),
       moves: pokemon.moves.map(({ move }) => move.name).slice(0, 30),
-      pictures: Object.values(pokemon.sprites).filter(picture => picture !== null && typeof picture === 'string')
+      pictures: Object.values(pokemon.sprites).filter(picture => picture !== null && typeof picture === 'string'),
+      types: pokemon.types.map(type => type.type.name),
+      stats: pokemon.stats.map(stat => (
+        {
+          name: stat.stat.name,
+          stat: stat.base_stat
+        }
+      ))
     }
   }
 
