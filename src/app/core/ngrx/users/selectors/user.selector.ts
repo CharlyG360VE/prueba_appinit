@@ -7,3 +7,8 @@ export const getLoggedUser = createSelector(
   userState,
   (state: IUserInitialState) => state.loggedUser
 );
+
+export const getFullname = createSelector(
+  userState,
+  (state: IUserInitialState) => `${state.loggedUser?.firstName ?? ''} ${state.loggedUser?.lastName ?? ''}`
+);

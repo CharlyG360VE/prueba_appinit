@@ -18,8 +18,7 @@
                 alt="Profile pinture" />
 
           <div class="header-text" [ngClass]="{'hide-header-text': collapsed()}">
-              <h2 class="gray-color-3">{{ fullname }}</h2>
-              <p class="gray-color-3">{{ roleName }}</p>
+              <h2 class="gray-color-3">{{ fullname | async }}</h2>
           </div>
       </div>
 

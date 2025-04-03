@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { eAppRoutes } from '@core/enums/app-routes.enum';
 import { AppState } from '@core/ngrx/app.reducer';
 import { logoutUser } from '@core/ngrx/users/actions/user.actions';
+import { getFullname } from '@core/ngrx/users/selectors/user.selector';
 import { LAYOUT_IMPORTS as imports } from '@modules/layout/helpers/layout-imports.helper';
 import { IMenuItem } from '@modules/layout/interfaces/menu.interface';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 
 
 @Component({
@@ -19,6 +20,8 @@ export default class LayoutComponent {
 
   private readonly _router = inject(Router);
   private readonly _store = inject(Store<AppState>);
+
+  public readonly fullname = this._store.pipe(select(getFullname));
 
   menuItems: IMenuItem[] = [
     {
@@ -35,13 +38,6 @@ export default class LayoutComponent {
   collapsed = signal(true);
   sidenavWidth = computed(() => this.collapsed() ? '5.6em' : '16em');
   profilePicSize = computed(() => this.collapsed() ? '32' : '100');
-
-  get fullname() {
-    return '';
-  }
-  get roleName() {
-    return '';
-  }
 
   logout() {
     this._store.dispatch(logoutUser());
