@@ -37,3 +37,11 @@ Una vez compilado, abre tu navegador y navega a la siguiente ruta `http://localh
 ## Ruta de despliegue
 
 El proyecto lo desplegue en Vercel ya que por defecto implementa CI/CD y esta es la ruta de despliegue `https://pokemons-appinit.vercel.app/`.
+
+## Usuarios para el inicio de sesión
+
+* ash@pokemon.com
+* 123456
+
+* oak@pokemon.com
+* 654321
