@@ -1,0 +1,29 @@
+<div class="my-5">
+  <div class="d-flex justify-content-center mt-4 mb-4">
+    <h2>
+      Listado de pokemons
+    </h2>
+  </div>
+
+  @if (pokemonList().length > 0) {
+    <div class="d-flex justify-content-around flex-wrap">
+      @for (pokemon of pokemonList(); track pokemon.name) {
+        <appinit-card [title]="pokemon.name">
+          <mat-card-actions class="justify-content-center mt-4">
+            <button mat-raised-button (click)="pokemonDetail(pokemon.name)">
+              Ver detalle
+            </button>
+          </mat-card-actions>
+        </appinit-card>
+      }
+    </div>
+
+    <div class="d-flex justify-content-center mt-3 mb-5">
+      <button mat-icon-button matTooltip="Ver mas..." (click)="next()">
+        <mat-icon [fontSet]="'material-icons-round'" matListItemIcon>
+          keyboard_arrow_down
+        </mat-icon>
+      </button>
+    </div>
+  }
+</div>

@@ -1,0 +1,25 @@
+<section class="h100 d-flex justify-content-center align-items-center gray-color-3">
+  <appinit-card [title]="'Iniciar sesión'">
+    <form [formGroup]="form" class="my-4">
+      <mat-form-field class="w-100" appearance="fill" color="primary">
+        <mat-label class="fs-14px">Correo</mat-label>
+        <input  matInput
+                [formControl]="form.controls.email"
+                type="text"
+                autocomplete="off" />
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="fill" color="primary">
+        <mat-label class="fs-14px">Contraseña</mat-label>
+        <input  matInput
+                [formControl]="form.controls.password"
+                type="password"
+                autocomplete="off" />
+      </mat-form-field>
+    </form>
+
+    <mat-card-actions class="justify-content-center">
+      <button mat-raised-button color="primary" class="custom-btn" [disabled]="form.invalid" (click)="login()">Iniciar</button>
+    </mat-card-actions>
+  </appinit-card>
+</section>
