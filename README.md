@@ -41,7 +41,7 @@ El proyecto lo desplegue en Vercel ya que por defecto implementa CI/CD y esta es
 ## Usuarios para el inicio de sesión
 
 * ash@pokemon.com
-* 123456
+123456
 
 * oak@pokemon.com
-* 654321
+654321
