@@ -1,21 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { Component, inject, Input, signal } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
-import { AppinitCardComponent } from '@core/shared/UI/appinit-card/appinit-card.component';
+import { POKEMON_DETAIL_IMPORTS as imports } from '@modules/pokemons/helpers/pokemon-details.imports.helper';
 import { IPokemonDetail } from '@modules/pokemons/interfaces/pokemons.interface';
 import { PokemonsService } from '@modules/pokemons/services/pokemons.service';
-import { MatChipsModule } from '@angular/material/chips';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-detail',
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatChipsModule,
-    AppinitCardComponent
-  ],
+  imports,
   templateUrl: './pokemon-detail.component.html',
   styleUrl: './pokemon-detail.component.scss'
 })

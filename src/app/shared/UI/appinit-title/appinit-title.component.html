@@ -1,0 +1,11 @@
+<div class="d-flex flex-column align-items-center my-5">
+  @if (title.length > 0) {
+    <h2>{{ title }}</h2>
+  }
+
+  @if (subTitle.length > 0) {
+    <p class="title-description">{{ subTitle }}</p>
+  }
+
+  <ng-content></ng-content>
+</div>

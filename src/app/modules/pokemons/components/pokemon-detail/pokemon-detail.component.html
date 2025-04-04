@@ -1,9 +1,5 @@
 <div class="my-5">
-  <div class="d-flex flex-column align-items-center my-5">
-    <h2> {{ name | titlecase }} </h2>
-
-    <p class="title-description">Aqui puedes explorar mas el detalle del pokemon {{ name }}.</p>
-
+  <appinit-title [title]="name | titlecase" [subTitle]="'Aqui puedes explorar mas el detalle del pokemon ' + name + '.'">
     @if (pokemonDetail()) {
       <div class="d-flex justify-content-center py-4 flex-wrap">
         @for (picture of pokemonDetail()?.pictures; track picture) {
@@ -11,7 +7,7 @@
         }
       </div>
     }
-  </div>
+  </appinit-title>
 
   @if (pokemonDetail()) {
     <div class="row justify-content-center">

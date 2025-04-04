@@ -1,9 +1,5 @@
 <div class="my-5">
-  <div class="d-flex flex-column align-items-center my-5">
-    <h2> Listado de pokemons </h2>
-
-    <p class="title-description">Aqui puedes explorar la lista de Pokémons, busca tus favoritos y descubre nuevos pokemons.</p>
-  </div>
+  <appinit-title title="Listado de pokemons" subTitle="Aqui puedes explorar la lista de Pokémons, busca tus favoritos y descubre nuevos pokemons."></appinit-title>
 
   @if (pokemonList().length > 0) {
     <form [formGroup]="form" class="my-4">
